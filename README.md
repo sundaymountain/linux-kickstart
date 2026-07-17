@@ -10,38 +10,96 @@ bash <(curl -fsSL https://raw.githubusercontent.com/sundaymountain/linux-kicksta
 
 ## What it installs
 
-| Package         | Purpose                          |
-|-----------------|----------------------------------|
-| **neovim**      | Modern Vim-based editor          |
-| **docker**      | Container runtime                |
-| **zoxide**      | Smarter `cd` command             |
-| **brew**        | Homebrew package manager         |
-| **build-essential** | Compilers & dev tools        |
-| gnupg           | GPG encryption                   |
-| dconf-cli       | GNOME settings CLI               |
-| procps          | Process utilities                |
-| curl            | HTTP transfers                   |
-| file            | File type detection              |
-| gnome-terminal  | Terminal emulator                |
-| lsb-release     | Distro metadata                  |
+| Package            | Purpose                          |
+|--------------------|----------------------------------|
+| **neovim**         | Modern Vim-based editor          |
+| **docker**         | Container runtime                |
+| **zoxide**         | Smarter `cd` command             |
+| **brew**           | Homebrew package manager         |
+| **build-essential**| Compilers & dev tools            |
+| **ripgrep**        | Blazing-fast code search         |
+| **fd-find**        | Fast file find                   |
+| **fzf**            | Fuzzy finder                     |
+| **bat**            | Syntax-highlighted `cat`         |
+| **tmux**           | Terminal multiplexer             |
+| **htop**           | Interactive process viewer       |
+| **btop**           | Modern resource monitor          |
+| gnupg              | GPG encryption                   |
+| dconf-cli          | GNOME settings CLI               |
+| procps             | Process utilities                |
+| curl               | HTTP transfers                   |
+| file               | File type detection              |
+| gnome-terminal     | Terminal emulator                |
+| lsb-release        | Distro metadata                  |
 
 ## Included Aliases
 
-| Alias       | Command                                      |
-|-------------|----------------------------------------------|
-| `v`         | `nvim`                                       |
-| `c`         | `clear`                                      |
-| `h`         | `history`                                    |
-| `hg`        | `history \| grep $1`                         |
-| `ll`        | `ls -lah --color=always --group-directories-first` |
-| `rm`        | `rm -I --preserve-root`                     |
-| `cp`        | `cp -i`                                      |
-| `mv`        | `mv -i`                                      |
-| `mkdir`     | `mkdir -p`                                   |
-| `update`    | `sudo apt update`                            |
-| `upgrade`   | `sudo apt upgrade`                           |
-| `remove`    | `sudo apt remove`                            |
-| `usage`     | `du -ch \| grep total`                      |
-| `totalusage`| `df -hl --total \| grep total`              |
-| `partusage` | `df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs` |
-| `most`      | `du -hsx * \| sort -rh \| head -10`         |
+### apt helpers
+| Alias       | Command                            |
+|-------------|------------------------------------|
+| `update`    | `sudo apt update`                  |
+| `upgrade`   | `sudo apt upgrade`                 |
+| `install`   | `sudo apt install`                 |
+| `remove`    | `sudo apt remove`                  |
+| `search`    | `apt search`                       |
+| `pkgsearch` | `apt list`                         |
+| `flsearch`  | `apt search`                       |
+| `pkglist`   | `apt list --installed`             |
+| `pkgshow`   | `apt show`                         |
+
+### safety
+| Alias    | Command                                  |
+|----------|------------------------------------------|
+| `rm`     | `rm -I --preserve-root`                  |
+| `cp`     | `cp -i`                                  |
+| `mv`     | `mv -i`                                  |
+| `mkdir`  | `mkdir -p`                               |
+
+### ls
+| Alias | Command                                                |
+|-------|--------------------------------------------------------|
+| `ll`  | `ls -lah --color=always --group-directories-first`     |
+
+### disk usage
+| Alias         | Command                                             |
+|---------------|-----------------------------------------------------|
+| `usage`       | `du -ch \| grep total`                              |
+| `totalusage`  | `df -hl --total \| grep total`                      |
+| `partusage`   | `df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs` |
+| `most`        | `du -hsx * \| sort -rh \| head -10`                 |
+
+### tools
+| Alias | Command              |
+|-------|----------------------|
+| `v`   | `nvim`               |
+| `c`   | `clear`              |
+| `h`   | `htop`               |
+| `hh`  | `btop`               |
+| `hg`  | `history \| grep $1` |
+| `t`   | `tmux`               |
+| `rg`  | `ripgrep`            |
+| `f`   | `fd`                 |
+| `ff`  | `fzf`                |
+| `g`   | `grep`               |
+| `bat` | `/bin/batcat`        |
+
+### git
+| Alias   | Command              |
+|---------|----------------------|
+| `g`     | `git`                |
+| `gs`    | `git status`         |
+| `ga`    | `git add`            |
+| `ga.`   | `git add .`          |
+| `gc`    | `git commit -m`      |
+| `gp`    | `git push`           |
+| `gpull` | `git pull`           |
+| `gco`   | `git checkout`       |
+| `gb`    | `git branch`         |
+| `gd`    | `git diff`           |
+| `gl`    | `git log --oneline`  |
+
+### apps
+| Alias | Command        |
+|-------|----------------|
+| `q`   | `qutebrowser`  |
+| `y`   | `yazi`         |
