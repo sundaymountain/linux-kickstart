@@ -34,6 +34,8 @@ bash <(curl -fsSL https://raw.githubusercontent.com/sundaymountain/linux-kicksta
 | gnome-terminal     | Terminal emulator                |
 | lsb-release        | Distro metadata                  |
 | **zsh**            | Z shell (with optional config)   |
+| **eza**            | Modern `ls` replacement           |
+| **lazygit**        | Terminal Git UI                   |
 
 ## Included Aliases
 
@@ -56,7 +58,8 @@ bash <(curl -fsSL https://raw.githubusercontent.com/sundaymountain/linux-kicksta
 | `rm`     | `rm -I --preserve-root`                  |
 | `cp`     | `cp -i`                                  |
 | `mv`     | `mv -i`                                  |
-| `mkdir`  | `mkdir -p`                               |
+| `ln`     | `ln -i`                                  |
+| `mkdir`  | `mkdir -pv`                              |
 
 ### ls
 | Alias | Command                                                |
@@ -79,17 +82,18 @@ bash <(curl -fsSL https://raw.githubusercontent.com/sundaymountain/linux-kicksta
 | `h`   | `htop`               |
 | `hh`  | `btop`               |
 | `hg`  | `history \| grep $1` |
+| `hrg` | `history \| ripgrep $1` |
 | `t`   | `tmux`               |
 | `rg`  | `ripgrep`            |
 | `f`   | `fd`                 |
 | `ff`  | `fzf`                |
 | `g`   | `grep`               |
 | `bat` | `/bin/batcat`        |
+| `e`   | `eza`                |
 
 ### git
 | Alias   | Command              |
 |---------|----------------------|
-| `g`     | `git`                |
 | `gs`    | `git status`         |
 | `ga`    | `git add`            |
 | `ga.`   | `git add .`          |
@@ -100,6 +104,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/sundaymountain/linux-kicksta
 | `gb`    | `git branch`         |
 | `gd`    | `git diff`           |
 | `gl`    | `git log --oneline`  |
+| `lg`    | `lazygit`            |
 
 ### apps
 | Alias | Command        |

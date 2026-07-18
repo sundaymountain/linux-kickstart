@@ -63,7 +63,9 @@ setup_packages() {
         tmux \
         htop \
         btop \
-        zsh
+        zsh \
+        eza \
+        lazygit
 
     log "Installing Docker..."
     if ! command -v docker &>/dev/null; then
@@ -116,7 +118,8 @@ alias pkgshow='apt show'
 alias rm='rm -I --preserve-root'
 alias cp='cp -i'
 alias mv='mv -i'
-alias mkdir='mkdir -p'
+alias ln='ln -i'
+alias mkdir='mkdir -pv'
 
 ## ls
 alias ll='ls -lah --color=always --group-directories-first'
@@ -133,15 +136,16 @@ alias c='clear'
 alias h='htop'
 alias hh='btop'
 alias hg='history | grep $1'
+alias hrg='history | ripgrep $1'
 alias t='tmux'
 alias rg='ripgrep'
 alias f='fd'
 alias ff='fzf'
 alias g='grep'
 alias bat='/bin/batcat'
+alias e='eza'
 
 ## git
-alias g='git'
 alias gs='git status'
 alias ga='git add'
 alias ga.='git add .'
@@ -152,6 +156,7 @@ alias gco='git checkout'
 alias gb='git branch'
 alias gd='git diff'
 alias gl='git log --oneline'
+alias lg='lazygit'
 
 ## apps (override with your preferred launcher)
 alias q='qutebrowser'
