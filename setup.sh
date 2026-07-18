@@ -122,6 +122,7 @@ alias ln='ln -i'
 alias mkdir='mkdir -pv'
 
 ## ls
+alias l='ls --color=always --group-directories-first'
 alias ll='ls -lah --color=always --group-directories-first'
 
 ## disk usage
@@ -144,8 +145,8 @@ alias ff='fzf'
 alias g='grep'
 alias b='bat --paging=never'   # short files
 alias bb='bat'                 # long files
-alias e='eza --git --icons'
-alias ee='eza -l --git --icons'
+alias e='eza --git --icons --group-directories-first'
+alias ee='eza -l --git --icons --group-directories-first'
 
 ## git
 alias gs='git status'

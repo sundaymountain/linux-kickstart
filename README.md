@@ -64,6 +64,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/sundaymountain/linux-kicksta
 ### ls
 | Alias | Command                                                |
 |-------|--------------------------------------------------------|
+| `l`   | `ls --color=always --group-directories-first`          |
 | `ll`  | `ls -lah --color=always --group-directories-first`     |
 
 ### disk usage
@@ -90,8 +91,8 @@ bash <(curl -fsSL https://raw.githubusercontent.com/sundaymountain/linux-kicksta
 | `g`   | `grep`               |
 | `b`   | `bat --paging=never` |
 | `bb`  | `bat`                |
-| `e`   | `eza --git --icons`  |
-| `ee`  | `eza -l --git --icons` |
+| `e`   | `eza --git --icons --group-directories-first` |
+| `ee`  | `eza -l --git --icons --group-directories-first` |
 
 ### git
 | Alias   | Command              |
