@@ -138,12 +138,14 @@ alias hh='btop'
 alias hg='history | grep $1'
 alias hrg='history | ripgrep $1'
 alias t='tmux'
-alias rg='ripgrep'
+alias rg='ripgrep --hidden'
 alias f='fd'
 alias ff='fzf'
 alias g='grep'
-alias bat='/bin/batcat'
-alias e='eza'
+alias b='bat --paging=never'   # short files
+alias bb='bat'                 # long files
+alias e='eza --git --icons'
+alias ee='eza -l --git --icons'
 
 ## git
 alias gs='git status'

@@ -84,12 +84,14 @@ bash <(curl -fsSL https://raw.githubusercontent.com/sundaymountain/linux-kicksta
 | `hg`  | `history \| grep $1` |
 | `hrg` | `history \| ripgrep $1` |
 | `t`   | `tmux`               |
-| `rg`  | `ripgrep`            |
+| `rg`  | `ripgrep --hidden`   |
 | `f`   | `fd`                 |
 | `ff`  | `fzf`                |
 | `g`   | `grep`               |
-| `bat` | `/bin/batcat`        |
-| `e`   | `eza`                |
+| `b`   | `bat --paging=never` |
+| `bb`  | `bat`                |
+| `e`   | `eza --git --icons`  |
+| `ee`  | `eza -l --git --icons` |
 
 ### git
 | Alias   | Command              |
