@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Linux Kickstart - Post-installation setup for Ubuntu
-# Usage: curl -fsSL https://raw.githubusercontent.com/<USER>/linux-kickstart/main/setup.sh | bash
+# Usage: curl -fsSL https://raw.githubusercontent.com/sundaymountain/linux-kickstart/main/setup.sh | bash
 #
 set -euo pipefail
 
@@ -9,6 +9,36 @@ RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; NC='\033[0m'
 log()  { echo -e "${GREEN}[✓]${NC} $1"; }
 warn() { echo -e "${YELLOW}[!]${NC} $1"; }
 err()  { echo -e "${RED}[✗]${NC} $1"; }
+
+detect_shell() {
+    local default_rc default_name
+    if [[ "${SHELL:-}" == *zsh* ]]; then
+        default_rc="$HOME/.zshrc"
+        default_name="zsh"
+    else
+        default_rc="$HOME/.bashrc"
+        default_name="bash"
+    fi
+
+    echo ""
+    echo "Which shell are you using?"
+    echo "  1) bash (default)"
+    echo "  2) zsh"
+    echo ""
+    printf "Enter choice [1]: "
+    read -r choice
+    case "${choice}" in
+        2|zsh)
+            SHELL_NAME="zsh"
+            SHELL_RC="$HOME/.zshrc"
+            ;;
+        *)
+            SHELL_NAME="$default_name"
+            SHELL_RC="$default_rc"
+            ;;
+    esac
+    log "Selected ${SHELL_NAME} — will append to ${SHELL_RC}"
+}
 
 setup_packages() {
     log "Updating package lists..."
@@ -32,7 +62,8 @@ setup_packages() {
         bat \
         tmux \
         htop \
-        btop
+        btop \
+        zsh
 
     log "Installing Docker..."
     if ! command -v docker &>/dev/null; then
@@ -54,16 +85,21 @@ setup_packages() {
     fi
 
     log "Configuring zoxide..."
-    echo 'eval "$(zoxide init bash)"' >> "$HOME/.bashrc"
+    echo "eval \"\$(zoxide init ${SHELL_NAME})\"" >> "$SHELL_RC"
 }
 
 setup_aliases() {
-    log "Appending aliases to ~/.bashrc..."
+    log "Appending aliases to ${SHELL_RC}..."
 
-    cat >> "$HOME/.bashrc" << 'EOF'
+    if [[ "$SHELL_NAME" == "zsh" ]]; then
+        echo "bindkey -v" >> "$SHELL_RC"
+    else
+        echo "set -o vi" >> "$SHELL_RC"
+    fi
+
+    cat >> "$SHELL_RC" << 'EOF'
 
 # ---------- Linux Kickstart Aliases ----------
-set -o vi
 
 ## apt helpers
 alias update='sudo apt update'
@@ -123,15 +159,15 @@ alias y='yazi'
 # -------------------------------------------
 EOF
 
-    log "Aliases appended. Restart your shell or run: source ~/.bashrc"
+    log "Aliases appended. Restart your shell or run: source ${SHELL_RC}"
 }
 
 main() {
     echo "========================================"
     echo "  Linux Kickstart - Ubuntu Setup"
     echo "========================================"
-    echo ""
 
+    detect_shell
     setup_packages
     setup_aliases
 

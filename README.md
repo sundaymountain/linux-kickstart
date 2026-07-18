@@ -2,6 +2,8 @@
 
 One-command post-installation setup for **Ubuntu** (laptop, desktop, or WSL).
 
+Supports both **bash** and **zsh** — the script prompts you to choose before installing.
+
 ## Quick Install
 
 ```bash
@@ -31,6 +33,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/sundaymountain/linux-kicksta
 | file               | File type detection              |
 | gnome-terminal     | Terminal emulator                |
 | lsb-release        | Distro metadata                  |
+| **zsh**            | Z shell (with optional config)   |
 
 ## Included Aliases
 
